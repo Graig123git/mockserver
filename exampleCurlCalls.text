@@ -1,0 +1,9 @@
+
+
+curl http://localhost:9000/api/application/Listing
+
+curl http://localhost:9000/api/application/image/1234
+
+curl http://localhost:9000/api/application/detail/1234
+
+curl http://localhost:9000/api/application/document/detail/1234
