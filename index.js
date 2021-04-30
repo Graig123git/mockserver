@@ -1,10 +1,11 @@
 'use strict';
 
 const express = require('express');
+var cors = require('cors');
 const app = express();
 const port = process.env.port || 9000;
 const apiRoutes = require('./routes/index');
-
+app.use(cors());
 app.use(express.json());
 app.use('/api', apiRoutes);
 app.get('/', (req, res) => {
