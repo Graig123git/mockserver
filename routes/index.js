@@ -27,7 +27,12 @@ router.get('/application/image/:filename', async (req, res) => {
 	try {
 		const filepath = 'routes/jsonFiles/application_image_' + req.params.filename + '.b64';
 		const applicationImage = await fs.readFile(filepath);
-		return res.send({ statusCode: 200, data: applicationImage });
+		const base64Version = Buffer.from(applicationImage, 'base64');
+		res.writeHead(200, {
+			'Content-Type': 'image/jpg',
+			'Content-Length': base64Version.length,
+		});
+		res.end(base64Version);
 	} catch (error) {
 		res.send({ err: error, status: 500 });
 	}
